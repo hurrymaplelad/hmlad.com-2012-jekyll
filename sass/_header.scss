@@ -1,0 +1,17 @@
+body > header {
+  h1 {
+    display: inline-block;
+    color: $title-color;
+
+    background-image: url('/images/syrup.trans.png');
+    background-size: auto 38%;
+    background-repeat: no-repeat;
+    background-position: 88% bottom;
+    padding-bottom: 0.3em;
+    
+    a, a:visited {
+      color: $subtitle-color;
+      text-decoration: none !important; 
+    }
+  }
+}

@@ -1,0 +1,41 @@
+body > footer {
+  font-size: .7em;
+  color: $footer-link-color;
+  position: relative;
+  padding-top: .5em;
+  margin-bottom: 2em;
+  border-top: 4px solid $footer-border-top;
+}
+
+.icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  float: right;
+  margin-left: 10px;
+}
+
+.github {
+  background-image: url('/images/icons/github.desaturated.png');
+  &:hover, &:active {
+    background-image: url('/images/icons/github.png');
+  }
+}
+.goodreads {
+  background-image: url('/images/icons/goodreads.desaturated.png');
+  &:hover, &:active {
+    background-image: url('/images/icons/goodreads.png');
+  }
+}
+.linkedin {
+  background-image: url('/images/icons/linkedin.desaturated.png');
+  &:hover, &:active {
+    background-image: url('/images/icons/linkedin.png');
+  }
+}
+.stackoverflow {
+  background-image: url('/images/icons/stackoverflow.desaturated.png');
+  &:hover, &:active {
+    background-image: url('/images/icons/stackoverflow.png');
+  }
+}
