@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Hurry Maple Lad]]></title>
+  <link href="http://hurrymaplelad.com/atom.xml" rel="self"/>
+  <link href="http://hurrymaplelad.com/"/>
+  <updated>2012-11-03T21:32:45-07:00</updated>
+  <id>http://hurrymaplelad.com/</id>
+  <author>
+    <name><![CDATA[Adam Hull]]></name>
+    
+  </author>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mongoose Care and Feeding: Removing a Property from a Schema]]></title>
+    <link href="http://hurrymaplelad.com/removing-a-property-from-a-mongoose-schema/"/>
+    <updated>2012-11-03T00:00:00-07:00</updated>
+    <id>http://hurrymaplelad.com/removing-a-property-from-a-mongoose-schema</id>
+    <content type="html"><![CDATA[<p>We&#8217;ve been stuffing genuine <a href="https://www.goodeggs.com/roundvalley">food</a> into <a href="http://mongoosejs.com/">Mongoose models</a> at Good Eggs long enough to encounter some deceptively nuanced maintenance tasks.  Chores that should be brain-dead.  Consider removing a property from a well loved, long-lived schema.  Simple, right?</p>
+
+<p>Let&#8217;s try replacing an <code>organic</code> flag on a toy <code>Food</code> model with <a href="http://www.nytimes.com/2012/10/14/opinion/sunday/bittman-my-dream-food-label.html">Bittman&#8217;s dream label</a>.</p>
+
+<!-- more -->
+
+
+<p>Our well-loved <code>Food</code> schema might look something like:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">Food</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;Food&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="p">{</span><span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span>
+</span><span class='line'>  <span class="nx">organic</span><span class="o">:</span> <span class="nb">Boolean</span>
+</span><span class='line'><span class="p">},</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">strict</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">}));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and it might be populated with documents like organic frozen broccoli:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">broccoli</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Food</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;frozen broccoli&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">organic</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Alright, time to get rid of that <code>organic</code> property.  Adding a property with Mongoose is as easy as declaring it in the schema.  Could removing be just as easy?</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'>  var Food = db.model(&#39;Food&#39;, new mongoose.Schema({
+</span><span class='line'>    name: {type: String, required: true},
+</span><span class='line'><span class="gd">-   organic: Boolean</span>
+</span><span class='line'>  }, {
+</span><span class='line'>    strict: true
+</span><span class='line'>  }));
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If we reload our broccoli doc, will mongoose strip out the undeclared properties?  We did tell Mongoose to be <code>strict</code> with our <code>Food</code>…</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">Food</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">broccoli</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;organic&#39;</span><span class="p">));</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;</span> <span class="kc">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No.  Too slick.  I suppose it&#8217;s comforting that mongoose isn&#8217;t silently manipulating our docs.  Maybe we just need to re-save <code>broccoli</code>.  Surely mongoose will be <code>strict</code> now…</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">broccoli</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">Food</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">broccoli</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;organic&#39;</span><span class="p">))</span>
+</span><span class='line'>  <span class="p">})</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;</span> <span class="kc">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Nope.  <a href="http://grokbase.com/t/gg/mongoose-orm/123ya4qp0a/mongoose-removing-an-existing-field-from-a-collection#20120330swrofqtizat6i3kalhvfrusz5a">Mr. Heckmann rationalizes this behavior</a> as</p>
+
+<blockquote><p>Mongoose &#8220;plays nice&#8221; with existing data in the db, not deleting it unless you tell it to.</p></blockquote>
+
+<p>I&#8217;ll have to be more explicit with this broccoli, more meticulous with my cleanup.  I&#8217;ll unset <code>organic</code> directly.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">broccoli</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;organic&#39;</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">);</span>
+</span><span class='line'><span class="nx">broccoli</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">Food</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">broccoli</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;organic&#39;</span><span class="p">));</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;</span> <span class="kc">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Wow.  Fine.  Now <code>strict</code> decides to help out.</p>
+
+<p>Mongoose isn&#8217;t cooperating.  Time to talk directly to Mongo.  Maybe Mongoose can at least offer me some <a href="http://mongoosejs.com/docs/api.html#model_Model-update">update sugar</a>:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">Food</span><span class="p">.</span><span class="nx">update</span><span class="p">({},</span>
+</span><span class='line'>  <span class="p">{</span><span class="nx">$unset</span><span class="o">:</span> <span class="p">{</span><span class="nx">organic</span><span class="o">:</span> <span class="kc">true</span><span class="p">}},</span>
+</span><span class='line'>  <span class="p">{</span><span class="nx">multi</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">safe</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span>
+</span><span class='line'>  <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">Food</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">broccoli</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;organic&#39;</span><span class="p">));</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;</span> <span class="kc">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://hurrymaplelad.com/images/yuno.jpg" alt="Y U NO UNSET!?" /></p>
+
+<p>This must be <code>strict</code> still <a href="https://groups.google.com/d/topic/mongoose-orm/ypvL3Fximjc/discussion">keeping us safe</a>.</p>
+
+<p>Okay.  Last chance Mongoose.  Just give me the collection.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">Food</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">update</span><span class="p">({},</span>
+</span><span class='line'>  <span class="p">{</span><span class="nx">$unset</span><span class="o">:</span> <span class="p">{</span><span class="nx">organic</span><span class="o">:</span> <span class="kc">true</span><span class="p">}},</span>
+</span><span class='line'>  <span class="p">{</span><span class="nx">multi</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">safe</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span>
+</span><span class='line'>  <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">Food</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">brocolli</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">broccoli</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;organic&#39;</span><span class="p">));</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;</span> <span class="kc">undefined</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Phew.</p>
+
+<p>Here&#8217;s a <a href="https://gist.github.com/4008255">Mocha spec</a> reproducing this frustrating sequence.  How should we make it be better?</p>
+]]></content>
+  </entry>
+  
+</feed>
