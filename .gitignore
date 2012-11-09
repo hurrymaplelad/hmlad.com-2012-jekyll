@@ -3,9 +3,9 @@
 .sass-cache
 .gist-cache
 .pygments-cache
-_deploy
+deploy
 public
 source/_stash
-source/stylesheets/screen.css
+source/stylesheets
 vendor
 node_modules

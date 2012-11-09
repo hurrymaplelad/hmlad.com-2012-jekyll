@@ -1,13 +1,19 @@
 ---
 layout: post
-title: "Mongoose Care and Feeding: Removing a Property from a Schema"
+title: "How to Remove a Property from a Mongoose.js Schema"
 comments: true
 categories: 
 ---
 
-We've been stuffing genuine [food](https://www.goodeggs.com/roundvalley) into [Mongoose models](http://mongoosejs.com/) at Good Eggs long enough to encounter some deceptively nuanced maintenance tasks.  Chores that should be brain-dead.  Consider removing a property from a well loved, long-lived schema.  Simple, right?  
+This should be simple, but Mongoose really clings to data in existing documents.  I'll walk through all the ways I wanted it to work that failed.  We'll remove an `organic` flag from a toy `Food` model so we can replace it with [Bittman's dream label](http://www.nytimes.com/2012/10/14/opinion/sunday/bittman-my-dream-food-label.html).  If you just came for the solution, I arrived at:
 
-Let's try replacing an `organic` flag on a toy `Food` model with [Bittman's dream label](http://www.nytimes.com/2012/10/14/opinion/sunday/bittman-my-dream-food-label.html).
+{% codeblock lang:js %}
+Food.collection.update({}, 
+  {$unset: {organic: true}}, 
+  {multi: true, safe: true}
+);
+{% endcodeblock %}
+
 <!-- more -->Our well-loved `Food` schema might look something like:
 
 {% codeblock lang:js %}
