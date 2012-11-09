@@ -7,7 +7,7 @@
   <meta name="author" content="Adam Hull">
 
   
-  <meta name="description" content="We&#8217;ve been stuffing genuine food into Mongoose models at Good Eggs long enough to encounter some deceptively nuanced maintenance tasks. Chores &hellip;">
+  <meta name="description" content="This should be simple, but Mongoose really clings to data in existing documents. I&#8217;ll walk through all the ways I wanted it to work that failed &hellip;">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +54,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/removing-a-property-from-a-mongoose-schema/">Mongoose Care and Feeding: Removing a Property From a Schema</a></h1>
+      <h1 class="entry-title"><a href="/removing-a-property-from-a-mongoose-schema/">How to Remove a Property From a Mongoose.js Schema</a></h1>
     
     
       <p class="meta">
@@ -76,9 +76,20 @@
   </header>
 
 
-  <div class="entry-content"><p>We&#8217;ve been stuffing genuine <a href="https://www.goodeggs.com/roundvalley">food</a> into <a href="http://mongoosejs.com/">Mongoose models</a> at Good Eggs long enough to encounter some deceptively nuanced maintenance tasks.  Chores that should be brain-dead.  Consider removing a property from a well loved, long-lived schema.  Simple, right?</p>
+  <div class="entry-content"><p>This should be simple, but Mongoose really clings to data in existing documents.  I&#8217;ll walk through all the ways I wanted it to work that failed.  We&#8217;ll remove an <code>organic</code> flag from a toy <code>Food</code> model so we can replace it with <a href="http://www.nytimes.com/2012/10/14/opinion/sunday/bittman-my-dream-food-label.html">Bittman&#8217;s dream label</a>.  If you just came for the solution, I arrived at:</p>
 
-<p>Let&#8217;s try replacing an <code>organic</code> flag on a toy <code>Food</code> model with <a href="http://www.nytimes.com/2012/10/14/opinion/sunday/bittman-my-dream-food-label.html">Bittman&#8217;s dream label</a>.</p>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">Food</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">update</span><span class="p">({},</span>
+</span><span class='line'>  <span class="p">{</span><span class="nx">$unset</span><span class="o">:</span> <span class="p">{</span><span class="nx">organic</span><span class="o">:</span> <span class="kc">true</span><span class="p">}},</span>
+</span><span class='line'>  <span class="p">{</span><span class="nx">multi</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">safe</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
+</span><span class='line'><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 </div>
   
