@@ -50,6 +50,7 @@ task :stage do
   Rake::Task[:build].execute
 
   origin = `git config --get remote.origin.url`
+  system "git fetch origin gh-pages:gh-pages"
   system "git clone -b gh-pages . deploy"
   cd 'deploy' do
     system "git config remote.origin.url #{origin}"
