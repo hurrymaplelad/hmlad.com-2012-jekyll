@@ -4,13 +4,31 @@
   <title><![CDATA[Hurry Maple Lad]]></title>
   <link href="http://hurrymaplelad.com/atom.xml" rel="self"/>
   <link href="http://hurrymaplelad.com/"/>
-  <updated>2012-11-20T22:17:31-08:00</updated>
+  <updated>2013-01-09T19:59:34-08:00</updated>
   <id>http://hurrymaplelad.com/</id>
   <author>
     <name><![CDATA[Adam Hull]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Teacup Released]]></title>
+    <link href="http://hurrymaplelad.com/teacup-released/"/>
+    <updated>2013-01-09T18:04:00-08:00</updated>
+    <id>http://hurrymaplelad.com/teacup-released</id>
+    <content type="html"><![CDATA[<p><img src="https://raw.github.com/goodeggs/teacup/master/docs/teacup.jpg" alt="Teacup" /></p>
+
+<p>CoffeeScript templating from the Good Eggs labs:</p>
+
+<ul>
+<li><a href="http://bytes.goodeggs.com/post/40042760798/teacup-coffeescript-templates-for-developer-happiness">Intro Post</a></li>
+<li><a href="http://goodeggs.github.com/teacup/">Homepage</a></li>
+<li><a href="http://github.com/goodeggs/teacup/">Source on Github</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Remove a Property from a Mongoose.js Schema]]></title>
