@@ -11,9 +11,10 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="{{ root_url }}/favicon.png" type="image/png" rel="icon">
-  <link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="{{ root_url }}/favicon.png" type="image/png" rel="icon" />
+  <link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
   
-  <link href="{{ site.subscribe_rss }}" rel="alternate" title="{{site.title}}" type="application/atom+xml">
+  <link href="{{ site.subscribe_rss }}" rel="alternate" title="{{site.title}}" type="application/atom+xml" />
+  {% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}" />{% endif %}
   {% include google_analytics.html %}
 </head>

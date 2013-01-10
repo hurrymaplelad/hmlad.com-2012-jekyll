@@ -2,6 +2,7 @@
 layout: post
 title: "How to Remove a Property from a Mongoose.js Schema"
 comments: true
+canonical: "http://bytes.goodeggs.com/post/36553128854/how-to-remove-a-property-from-a-mongoosejs-schema"
 categories: 
 ---
 
