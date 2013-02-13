@@ -10,6 +10,12 @@
         {% include post/date.html %}{{ time }}
       </p>
     {% endunless %}
+    {% if index != true and page.canonical %}
+      <p class="canonical meta">
+        
+        <a href="{{page.canonical}}" target="_blank">Crossposted from {{ page.canonical | pretty_hostname }}</a>
+      </p>
+    {% endif %}
   </header>
 {% endunless %}
 {% if index %}

@@ -4,6 +4,7 @@ require './plugins/post_filters'
 require './plugins/raw'
 require './plugins/date'
 require 'rubypants'
+require 'uri'
 
 module OctopressFilters
   include BacktickCodeBlock
@@ -128,6 +129,11 @@ module OctopressLiquidFilters
   # Returns a title cased string based on John Gruber's title case http://daringfireball.net/2008/08/title_case_update
   def titlecase(input)
     input.titlecase
+  end
+
+  # Transforms a url into a prose-ready hostname
+  def pretty_hostname(input)
+    URI.parse(input).host
   end
 
 end
