@@ -4,13 +4,168 @@
   <title><![CDATA[Hurry Maple Lad]]></title>
   <link href="http://hurrymaplelad.com/atom.xml" rel="self"/>
   <link href="http://hurrymaplelad.com/"/>
-  <updated>2013-01-09T22:18:54-08:00</updated>
+  <updated>2013-02-13T00:07:55-08:00</updated>
   <id>http://hurrymaplelad.com/</id>
   <author>
     <name><![CDATA[Adam Hull]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Restructuring Assignment in CoffeeScript]]></title>
+    <link href="http://hurrymaplelad.com/restructuring-assignment-in-coffeescript/"/>
+    <updated>2013-02-12T22:34:00-08:00</updated>
+    <id>http://hurrymaplelad.com/restructuring-assignment-in-coffeescript</id>
+    <content type="html"><![CDATA[<p>CoffeeScript can save as many keystrokes putting objects together as it can taking them apart. You won’t find this one in the docs.</p>
+
+<!-- more -->
+
+
+<p>Sure <a href="http://blog.carbonfive.com/2011/09/28/destructuring-assignment-in-coffeescript/">C5 told you all about</a> CoffeeScript’s <a href="http://coffeescript.org/#destructuring">destructing assignment</a> syntax for objects…</p>
+
+<p>How it can reach deep into nested structures</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="nv">user = name: </span><span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span><span class="p">,</span> <span class="nv">address: </span><span class="p">{</span> <span class="nv">city: </span><span class="s">&#39;Anytown&#39;</span><span class="p">,</span> <span class="nv">state:</span>
+</span><span class='line'><span class="s">&#39;AL&#39;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span><span class="p">,</span> <span class="nv">address: </span><span class="p">{</span> <span class="nv">city: </span><span class="s">&#39;Anytown&#39;</span><span class="p">,</span> <span class="nv">state: </span><span class="s">&#39;AL&#39;</span> <span class="p">}</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="p">{</span> <span class="nv">address: </span><span class="p">{</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">state</span> <span class="p">}</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">user</span>
+</span><span class='line'><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span><span class="p">,</span> <span class="nv">address: </span><span class="p">{</span> <span class="nv">city: </span><span class="s">&#39;Anytown&#39;</span><span class="p">,</span> <span class="nv">state: </span><span class="s">&#39;AL&#39;</span> <span class="p">}</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="nx">city</span>
+</span><span class='line'><span class="s">&#39;Anytown&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or pluck apart function arguments</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">displayName = </span><span class="nf">({ name, age }) -&gt;</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">, </span><span class="si">#{</span><span class="nx">age</span><span class="si">}</span><span class="s"> year(s) old&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="nx">displayName</span> <span class="nv">name: </span><span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span>
+</span><span class='line'><span class="nx">Foo</span><span class="p">,</span> <span class="mi">42</span> <span class="nx">year</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="nx">old</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or even destructure directly to instance attributes</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">User</span>
+</span><span class='line'>  <span class="nv">constructor: </span><span class="nf">({ @name, @age }) -&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">name: </span><span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But what does this do?</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="nv">age = </span><span class="mi">42</span>
+</span><span class='line'><span class="mi">42</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="nv">user = </span><span class="p">{</span> <span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nx">age</span> <span class="p">}</span>
+</span><span class='line'><span class="o">?</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>My fudge-fingers managed to mash that one unknowingly into my editor one day while attempting to rack up velocity points on the latest story. Instead of hemorrhaging the expected SyntaxError, it evaluated to this beautiful new object</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="p">{</span> <span class="nv">Foo: </span><span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now I’ve got a handy set syntax</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="mi">2</span> <span class="k">of</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span> <span class="p">}</span>
+</span><span class='line'><span class="kc">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="mi">2</span> <span class="k">of</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span> <span class="p">}</span>
+</span><span class='line'><span class="kc">false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And with consistent variable naming, breezy data marshaling between some framework actors</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">User</span>
+</span><span class='line'>  <span class="nv">constructor: </span><span class="nf">({ @name, @age }) -&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">template = </span><span class="nf">({ user, face }) -&gt;</span>
+</span><span class='line'>  <span class="s">&quot;&lt;div&gt;</span><span class="si">#{</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="s"> </span><span class="si">#{</span><span class="nx">face</span><span class="si">}</span><span class="s">&lt;/div&gt;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nx">UserView</span>
+</span><span class='line'>  <span class="nv">constructor: </span><span class="nf">({ @user }) -&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">render: </span><span class="o">-&gt;</span>
+</span><span class='line'>    <span class="vi">@html = </span><span class="nx">template</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">@user</span>
+</span><span class='line'>      <span class="nv">face: </span><span class="s">&#39;:)&#39;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="nv">user = </span><span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">name: </span><span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="nv">view = </span><span class="k">new</span> <span class="nx">UserView</span> <span class="p">{</span><span class="nx">user</span><span class="p">}</span>
+</span><span class='line'><span class="p">{</span> <span class="nv">user: </span><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;Foo&#39;</span><span class="p">,</span> <span class="nv">age: </span><span class="mi">42</span> <span class="p">}</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">coffee</span><span class="o">&gt;</span> <span class="nx">view</span><span class="p">.</span><span class="nx">render</span><span class="p">()</span>
+</span><span class='line'><span class="s">&#39;&lt;div&gt;Foo :)&lt;/div&gt;&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Teacup Released]]></title>
