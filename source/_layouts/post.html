@@ -6,7 +6,22 @@ sidebar: false
 
 <div>
 <article class="hentry" role="article">
-  {% include article.html %}
+  {% unless page.no_header %}
+    <header>
+      <h1 class="entry-title">{{ page.title | titlecase }}</h1>
+      {% unless page.meta == false %}
+        <p class="meta">
+          {% include post/date.html %}{{ time }}
+        </p>
+      {% endunless %}
+      {% if page.canonical %}
+        <p class="canonical meta">
+          <a href="{{page.canonical}}" target="_blank">Crossposted from {{ page.canonical | pretty_hostname }}</a>
+        </p>
+      {% endif %}
+    </header>
+  {% endunless %}
+  <div class="entry-content">{{ content }}</div>
   <footer>
     <p class="meta">
       {% if page.previous.url %}

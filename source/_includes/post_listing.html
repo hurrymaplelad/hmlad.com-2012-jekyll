@@ -1,0 +1,17 @@
+{% unless post.no_header %}
+  <header>
+    <h1 class="entry-title"><a href="{{ root_url }}{{ post.url }}">{{ post.title | titlecase }}</a></h1>
+    {% unless post.meta == false %}
+      <p class="meta">
+        {% include post/date.html %}{{ time }}
+      </p>
+    {% endunless %}
+  </header>
+{% endunless %}
+<div class="entry-content">{{ post.content | excerpt }}</div>
+{% capture excerpted %}{{ post.content | has_excerpt }}{% endcapture %}
+{% if excerpted == 'true' %}
+  <footer>
+    <a rel="full-article" href="{{ root_url }}{{ post.url }}">{{ site.excerpt_link }}</a>
+  </footer>
+{% endif %}

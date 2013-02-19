@@ -122,13 +122,20 @@ blockquote {
   font-style: italic;
   position: relative;
   font-size: 1.2em;
+  font-weight: lighter;
   line-height: 1.5em;
   padding-left: 1em;
-  border-left: 4px solid rgba($text-color-light, .5);
   cite {
+    display: block;
     font-style: italic;
-    a { color: $text-color-light !important; word-wrap: break-word; }
-    &:before { content: '\2014'; padding:{right: .3em; left: .3em;} color: $text-color-light; }
+    font-size: 80%;
+    line-height: 1.2;
+    padding-right: 30%;
+    text-align: right;
+    a { 
+      color: $text-color-light !important; 
+      word-wrap: break-word; 
+    }
   }
   @media only screen and (min-width: 992px) {
     padding-left: 1.5em;
