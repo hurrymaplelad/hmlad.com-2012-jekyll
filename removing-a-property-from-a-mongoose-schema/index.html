@@ -50,13 +50,11 @@
       <div>
 <article class="hentry" role="article">
   
-  <header>
-    
+    <header>
       <h1 class="entry-title">How to Remove a Property From a Mongoose.js Schema</h1>
-    
-    
-      <p class="meta">
-        
+      
+        <p class="meta">
+          
 
 
 
@@ -69,18 +67,16 @@
 
 
 <time datetime="2012-11-03T00:00:00-07:00" pubdate data-updated="true">November 3<span>rd</span>, 2012</time>
-      </p>
-    
-    
-      <p class="canonical meta">
-        
-        <a href="http://bytes.goodeggs.com/post/36553128854/how-to-remove-a-property-from-a-mongoosejs-schema" target="_blank">Crossposted from bytes.goodeggs.com</a>
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>This should be simple, but Mongoose really clings to data in existing documents.  I&#8217;ll walk through all the ways I wanted it to work that failed.  We&#8217;ll remove an <code>organic</code> flag from a toy <code>Food</code> model so we can replace it with <a href="http://www.nytimes.com/2012/10/14/opinion/sunday/bittman-my-dream-food-label.html">Bittman&#8217;s dream label</a>.  If you just came for the solution, I arrived at:</p>
+        </p>
+      
+      
+        <p class="canonical meta">
+          <a href="http://bytes.goodeggs.com/post/36553128854/how-to-remove-a-property-from-a-mongoosejs-schema" target="_blank">Crossposted from bytes.goodeggs.com</a>
+        </p>
+      
+    </header>
+  
+  <div class="entry-content"><p>This should be simple, but Mongoose really clings to data in existing documents.  I&#8217;ll walk through all the ways I wanted it to work that failed.  We&#8217;ll remove an <code>organic</code> flag from a toy <code>Food</code> model so we can replace it with <a href="http://www.nytimes.com/2012/10/14/opinion/sunday/bittman-my-dream-food-label.html">Bittman&#8217;s dream label</a>.  If you just came for the solution, I arrived at:</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -266,8 +262,6 @@
 
 <p>Here&#8217;s a <a href="https://gist.github.com/4008255">Mocha spec</a> reproducing this frustrating sequence.  How should we make it be better?</p>
 </div>
-
-
   <footer>
     <p class="meta">
       

@@ -2,15 +2,19 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://hurrymaplelad.com/removing-a-property-from-a-mongoose-schema/</loc>
-        <lastmod>2013-01-09T22:15:35-08:00</lastmod>
+        <lastmod>2013-02-19T00:02:25-08:00</lastmod>
     </url>
     <url>
         <loc>http://hurrymaplelad.com/teacup-released/</loc>
-        <lastmod>2013-01-09T18:30:14-08:00</lastmod>
+        <lastmod>2013-02-19T00:02:25-08:00</lastmod>
     </url>
     <url>
         <loc>http://hurrymaplelad.com/restructuring-assignment-in-coffeescript/</loc>
-        <lastmod>2013-02-12T23:18:38-08:00</lastmod>
+        <lastmod>2013-02-19T00:02:25-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hurrymaplelad.com/a-breakthrough-a-day/</loc>
+        <lastmod>2013-02-19T00:02:25-08:00</lastmod>
     </url>
     <url>
         <loc>http://hurrymaplelad.com/404.html</loc>
@@ -18,10 +22,10 @@
     </url>
     <url>
         <loc>http://hurrymaplelad.com/archives/</loc>
-        <lastmod>2013-02-12T23:18:38-08:00</lastmod>
+        <lastmod>2013-02-18T23:52:48-08:00</lastmod>
     </url>
     <url>
         <loc>http://hurrymaplelad.com/</loc>
-        <lastmod>2013-02-12T23:51:20-08:00</lastmod>
+        <lastmod>2013-02-18T23:57:52-08:00</lastmod>
     </url>
 </urlset>
