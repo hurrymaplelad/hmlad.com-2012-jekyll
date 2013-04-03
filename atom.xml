@@ -4,7 +4,7 @@
   <title><![CDATA[Hurry Maple Lad]]></title>
   <link href="http://hurrymaplelad.com/atom.xml" rel="self"/>
   <link href="http://hurrymaplelad.com/"/>
-  <updated>2013-04-02T22:52:59-07:00</updated>
+  <updated>2013-04-02T23:01:44-07:00</updated>
   <id>http://hurrymaplelad.com/</id>
   <author>
     <name><![CDATA[Adam Hull]]></name>
@@ -29,15 +29,15 @@
 <table class="ids">
   <tr><th>Mongoose</th><th>id</th><th>_id</th></tr>
   <tr><td><a href="http://mongoosejs.com/docs/api.html#document_Document-id">document</a></td><td>String</td><td>ObjectID</td></tr>
-  <tr><td><a href="http://mongoosejs.com/docs/api.html#query_Query-lean">lean document</a></td><td>undefined</td><td>ObjectID</td></tr>
-  <tr><td><a href="http://mongoosejs.com/docs/api.html#document_Document-toJSON">document.toJSON()</a></td><td>undefined</td><td>ObjectID</td></tr>
+  <tr><td><a href="http://mongoosejs.com/docs/api.html#query_Query-lean">lean document</a></td><td>∅</td><td>ObjectID</td></tr>
+  <tr><td><a href="http://mongoosejs.com/docs/api.html#document_Document-toJSON">document.toJSON()</a></td><td>∅</td><td>ObjectID</td></tr>
 
-  <tr><th>JSON</th><th>id</th><th>_id</th></tr>
-  <tr><td><a href="http://www.json.org/">object</a></td><td>undefined</td><td>String</td></tr>
+  <tr><th>JSON</th><th></th><th></th></tr>
+  <tr><td><a href="http://www.json.org/">object</a></td><td>∅</td><td>String</td></tr>
 
-  <tr><th>Backbone</th><th>id</th><th>_id</th></tr>
-  <tr><td><a href="http://backbonejs.org/#Model-id">model</td><td>String</td><td>undefined</td></tr>
-  <tr><td><a href="http://backbonejs.org/#Model-get">model.get()</td><td>undefined</td><td>String</td></tr>
+  <tr><th>Backbone</th><th></th><th></th></tr>
+  <tr><td><a href="http://backbonejs.org/#Model-id">model</td><td>String</td><td>∅</td></tr>
+  <tr><td><a href="http://backbonejs.org/#Model-get">model.get()</td><td>∅</td><td>String</td></tr>
 </table>
 
 
