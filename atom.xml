@@ -4,13 +4,46 @@
   <title><![CDATA[Hurry Maple Lad]]></title>
   <link href="http://hurrymaplelad.com/atom.xml" rel="self"/>
   <link href="http://hurrymaplelad.com/"/>
-  <updated>2013-02-19T00:14:53-08:00</updated>
+  <updated>2013-04-02T22:52:59-07:00</updated>
   <id>http://hurrymaplelad.com/</id>
   <author>
     <name><![CDATA[Adam Hull]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ids in Mongoose, JSON, and Backbone]]></title>
+    <link href="http://hurrymaplelad.com/ids-in-mongoose-json-and-backbone/"/>
+    <updated>2013-04-02T21:24:00-07:00</updated>
+    <id>http://hurrymaplelad.com/ids-in-mongoose-json-and-backbone</id>
+    <content type="html"><![CDATA[<p>Mongoose adds <a href="http://mongoosejs.com/docs/guide.html#id">id sugar</a> on top the default _id document attribute.  Backbone has <a href="http://backbonejs.org/#Model-idAttribute">similar sugar</a>, but the types don&#8217;t line up.  Pushing bits between the two with a customary JSON document adds a third representation.</p>
+
+<p>If you find yourself typing <code>vegetable.id</code> when you really needed <code>new ObjectID(vegetable.toJSON()._id)</code> this fancy chart might help:</p>
+
+<!-- more -->
+
+
+
+
+<table class="ids">
+  <tr><th>Mongoose</th><th>id</th><th>_id</th></tr>
+  <tr><td><a href="http://mongoosejs.com/docs/api.html#document_Document-id">document</a></td><td>String</td><td>ObjectID</td></tr>
+  <tr><td><a href="http://mongoosejs.com/docs/api.html#query_Query-lean">lean document</a></td><td>undefined</td><td>ObjectID</td></tr>
+  <tr><td><a href="http://mongoosejs.com/docs/api.html#document_Document-toJSON">document.toJSON()</a></td><td>undefined</td><td>ObjectID</td></tr>
+
+  <tr><th>JSON</th><th>id</th><th>_id</th></tr>
+  <tr><td><a href="http://www.json.org/">object</a></td><td>undefined</td><td>String</td></tr>
+
+  <tr><th>Backbone</th><th>id</th><th>_id</th></tr>
+  <tr><td><a href="http://backbonejs.org/#Model-id">model</td><td>String</td><td>undefined</td></tr>
+  <tr><td><a href="http://backbonejs.org/#Model-get">model.get()</td><td>undefined</td><td>String</td></tr>
+</table>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A Breakthrough a Day]]></title>

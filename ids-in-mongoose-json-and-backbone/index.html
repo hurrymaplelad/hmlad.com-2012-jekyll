@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ids in Mongoose, JSON, and Backbone - Hurry Maple Lad</title>
+  <meta name="author" content="Adam Hull">
+
+  
+  <meta name="description" content="Mongoose adds id sugar on top the default _id document attribute. Backbone has similar sugar, but the types don&#8217;t line up. Pushing bits between &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="/favicon.png" type="image/png" rel="icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  
+  <link href="/atom.xml" rel="alternate" title="Hurry Maple Lad" type="application/atom+xml" />
+  
+  
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35976996-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar"  >
+  <header>
+    <h1 role="banner"><a href="/">
+  hurry
+  <br>maple
+  <br>lad
+</a></h1>
+
+    <nav role="navigation">
+      
+    </nav>
+  </header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+    <style scoped>.ids {
+  width: 100%;
+  margin-bottom: 30px;
+  table-layout: fixed;
+}
+.ids th:first-child {
+  font-size: 160%;
+  padding-bottom: 20px;
+  padding-top: 30px;
+}
+</style>
+  
+  
+    <header>
+      <h1 class="entry-title">Ids in Mongoose, JSON, and Backbone</h1>
+      
+        <p class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-02T21:24:00-07:00" pubdate data-updated="true">April 2<span>nd</span>, 2013</time>
+        </p>
+      
+      
+    </header>
+  
+  <div class="entry-content"><p>Mongoose adds <a href="http://mongoosejs.com/docs/guide.html#id">id sugar</a> on top the default _id document attribute.  Backbone has <a href="http://backbonejs.org/#Model-idAttribute">similar sugar</a>, but the types don&#8217;t line up.  Pushing bits between the two with a customary JSON document adds a third representation.</p>
+
+<p>If you find yourself typing <code>vegetable.id</code> when you really needed <code>new ObjectID(vegetable.toJSON()._id)</code> this fancy chart might help:</p>
+
+<!-- more -->
+
+
+
+
+<table class="ids">
+  <tr><th>Mongoose</th><th>id</th><th>_id</th></tr>
+  <tr><td><a href="http://mongoosejs.com/docs/api.html#document_Document-id">document</a></td><td>String</td><td>ObjectID</td></tr>
+  <tr><td><a href="http://mongoosejs.com/docs/api.html#query_Query-lean">lean document</a></td><td>undefined</td><td>ObjectID</td></tr>
+  <tr><td><a href="http://mongoosejs.com/docs/api.html#document_Document-toJSON">document.toJSON()</a></td><td>undefined</td><td>ObjectID</td></tr>
+
+  <tr><th>JSON</th><th>id</th><th>_id</th></tr>
+  <tr><td><a href="http://www.json.org/">object</a></td><td>undefined</td><td>String</td></tr>
+
+  <tr><th>Backbone</th><th>id</th><th>_id</th></tr>
+  <tr><td><a href="http://backbonejs.org/#Model-id">model</td><td>String</td><td>undefined</td></tr>
+  <tr><td><a href="http://backbonejs.org/#Model-get">model.get()</td><td>undefined</td><td>String</td></tr>
+</table>
+
+
+
+</div>
+  <footer>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/a-breakthrough-a-day/" title="Previous Post: A Breakthrough a Day">&laquo; A Breakthrough a Day</a>
+      
+      
+    </p>
+  </footer>
+</article>
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  by Adam Hull
+
+  <a class="linkedin icon" 
+     href="http://www.linkedin.com/in/hurrymaplelad" 
+     target="_blank"></a>
+  <a class="goodreads icon" 
+     href="http://www.goodreads.com/hurrymaplelad" 
+     target="_blank"></a>
+  <a class="stackoverflow icon" 
+     href="http://stackoverflow.com/users/407845/hurrymaplelad" 
+     target="_blank"></a>
+  <a class="github icon" 
+     href="https://github.com/hurrymaplelad" 
+     target="_blank"></a>
+</p>
+</footer>
+</body>
+</html>
