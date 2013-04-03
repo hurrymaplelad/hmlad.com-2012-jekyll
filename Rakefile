@@ -5,7 +5,7 @@ require "stringex"
 blog_index_dir  = 'source'    # directory for your blog's index page (if you put your index in source/blog/index.html, set this to 'source/blog')
 stash_dir       = "_stash"    # directory to stash posts for speedy generation
 posts_dir       = "_posts"    # directory for blog files
-server_port     = "4000"      # port for preview server eg. localhost:4000
+server_port     = "4400"      # port for preview server eg. localhost:4000
 
 desc "Clean out caches and generated files"
 task :clean do

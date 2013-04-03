@@ -1,3 +1,6 @@
+{% if post.style %}
+  <style scoped>{{post.style}}</style>
+{% endif %}
 {% unless post.no_header %}
   <header>
     <h1 class="entry-title"><a href="{{ root_url }}{{ post.url }}">{{ post.title | titlecase }}</a></h1>

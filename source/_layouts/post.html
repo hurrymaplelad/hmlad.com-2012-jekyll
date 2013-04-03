@@ -6,6 +6,9 @@ sidebar: false
 
 <div>
 <article class="hentry" role="article">
+  {% if page.style %}
+    <style scoped>{{page.style}}</style>
+  {% endif %}
   {% unless page.no_header %}
     <header>
       <h1 class="entry-title">{{ page.title | titlecase }}</h1>
